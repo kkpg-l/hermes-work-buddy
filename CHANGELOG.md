@@ -2,10 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v4.1] - 2026-06-05
+
+### Added
+- **使用场景举例**：4 个典型场景 + 推荐专家组合（技术选型/产品评估/架构审查/市场策略）
+- **Hermes 生态联动**：HeartFlow 验证、planning-workflow 联动、cronjob 定时任务
+- **专家角色扩展**：从 4 个扩展到 12 个（+ux/data/marketing/seo/security/legal/ops/content）
+- **输出格式扩展**：4 种内置模板（default/executive/weekly-report/comparison）+ 自定义模板
+- **输出目标扩展**：文件/飞书 Webhook/Notion API/PPT（python-pptx）
+- **智能路由**：`--route=auto` 根据问题内容自动选择专家数量和组合
+- **自定义报告模板**：用户可在 templates/ 目录下创建 .md 模板
+- **多轮上下文**：session_search 跨轮引用 + fact_store 历史对比（`--compare-history=true`）
+- **Skill 组合**：grill-me → Work Buddy、brainstorming → Work Buddy 等工作流
+- **fact_store 集成**：自动保存报告到 `~/.hermes/fact_store/expert-panel/`
+
+### Changed
+- 文档版本从 v4.0 升级到 v4.1（22 章 + 4 附录）
+- run.py 新增 auto_route、REPORT_TEMPLATES、fact_store 读写
+- SKILL.md 新增扩展角色、参数说明、Skill 组合示例
+
+---
+
 ## [v4.0] - 2026-06-05
 
 ### Added
-- 完整 v4.0 部署方案文档（12 章 + 4 附录）
+- 完整 v4.0 部署方案文档（14 章 + 4 附录）
 - `run.py` v4.0：修正 parse_args bug、delegate_task 签名、错误降级
 - 新增 `--experts` 参数：按需选择专家
 - 新增 `--mode=serial` 串行调试模式
@@ -17,11 +38,11 @@ All notable changes to this project will be documented in this file.
 - Llama.cpp 启动脚本 + systemd 服务文件
 - 配置示例 `config.example.yaml`
 - 风险登记表 + 回滚剧本
-- 6 类 SOP（日常/添加专家/升级/故障应急）
-- 安全与隐私章节（API Key / 提示词注入 / 网络出口）
-- 可观测性（日志位置 / 3 关键指标 / 调试开关）
-- 性能调优章节（并发/Token/本地模型/路由）
-- 迁移指南（v3.1 → v4.0 分步操作）
+- 6 类 SOP
+- 安全与隐私章节
+- 可观测性章节
+- 性能调优章节
+- 迁移指南
 
 ### Changed
 - 模型名修正：`Qwen3.5-4B` → `Qwen3-4B-Instruct`，`DeepSeek-V4-Flash` → `DeepSeek-V3.2-Flash`
@@ -36,8 +57,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - `parse_args` 对 `--key --flag2` 形式的解析 bug
-- `delegate_task` 签名混用（统一为 `goal=` / `tasks=` 分离调用）
-- 本地模型绑定 `0.0.0.0` 的安全隐患（改为 `127.0.0.1`）
+- `delegate_task` 签名混用
+- 本地模型绑定 `0.0.0.0` 的安全隐患
 
 ---
 
@@ -45,7 +66,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - 初始公开版本
-- 4 专家并行分析（技术/产品/商业/研究）
+- 4 专家并行分析
 - `delegate_task` 并行调度
 - 可选本地 Llama.cpp + Qwen GGUF
 - 基础排障指南
