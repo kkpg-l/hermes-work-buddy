@@ -63,7 +63,7 @@ bash ~/.hermes/skills/expert-panel/tests/smoke.sh
 
 ## 📖 文档
 
-- [完整部署方案 v4.1](docs/Hermes-Work-Buddy-专家团部署方案-v4.1.md) — 22 章 + 4 附录
+- [完整部署方案 v4.1](docs/Hermes-Work-Buddy-专家团部署方案-v4.0.md) — 22 章 + 4 附录
 
 ## ❓ FAQ
 
