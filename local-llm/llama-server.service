@@ -1,0 +1,18 @@
+[Unit]
+Description=Llama.cpp server (Qwen3-4B) for Hermes Work Buddy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/llama.cpp/start.sh
+Restart=on-failure
+RestartSec=5
+Environment=HOME=%h
+
+# 安全
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=%h/llama.cpp
+
+[Install]
+WantedBy=default.target

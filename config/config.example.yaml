@@ -1,0 +1,35 @@
+# Hermes Work Buddy 专家团配置示例
+# 复制到 ~/.hermes/profiles/default/config.yaml 并按需修改
+
+models:
+  primary: deepseek-chat
+  fallback: local-qwen
+  fallback_to_local: true
+  routes:
+    # 简单代码问题走本地
+    - when_prompt_matches: ["代码", "函数", "报错", "debug", "语法"]
+      use: local-qwen
+    # 长文本/研究走云端
+    - when_prompt_length_gt: 500
+      use: deepseek-chat
+    # 默认走云端
+    - default: deepseek-chat
+
+providers:
+  # 云端 DeepSeek
+  deepseek:
+    type: openai_compatible
+    endpoint: https://api.deepseek.com/v1
+    model_name: deepseek-chat
+    api_key: ${DEEPSEEK_API_KEY}
+    temperature: 0.3
+    max_tokens: 4096
+
+  # 本地 Qwen3-4B（可选）
+  local-qwen:
+    type: openai_compatible
+    endpoint: http://127.0.0.1:8080/v1
+    model_name: Qwen3-4B-Instruct-Q4_K_M
+    temperature: 0.2
+    timeout: 60
+    max_tokens: 2048

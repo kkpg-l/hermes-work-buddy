@@ -1,0 +1,38 @@
+# 依赖
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 环境与密钥
+.env
+*.key
+*.pem
+DEEPSEEK_API_KEY*
+
+# 模型文件（太大不放 git）
+*.gguf
+*.bin
+models/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+logs/
+
+# 备份
+*.bak
+*.backup
+*.old
